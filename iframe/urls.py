@@ -17,6 +17,6 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^play/', include('yt.urls')),
+    url(r'^$', include('yt.urls')),
     url(r'^admin/', admin.site.urls),
 ]

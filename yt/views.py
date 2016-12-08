@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
 def play(request):
     """
@@ -6,6 +7,10 @@ def play(request):
     """
     # Setting variables
     ids = request.GET.getlist("id", [])
+    if ids == []:
+        return HttpResponse("You seem to have been stumbled upon a website that is " + 
+                            "probably not for you unless you were invited too! " +
+                            "Anyways, thanks for passing by!")
     title = None
 
     # Constructing the context
