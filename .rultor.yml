@@ -2,7 +2,7 @@ architect:
   - meetmangukiya
 
 install:
-  - if ! pip3 -V ; then wget -O - https://bootstrap.pypa.io/get-pip.py | python3; fi
+  - if ! pip3 -V ; then wget -O - https://bootstrap.pypa.io/get-pip.py | sudo python3; fi
   - sudo pip3 install -r requirements.txt
 
 merge:
