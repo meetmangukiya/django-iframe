@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 def play(request):
     """
-    View function for the `/play` endpoint.
+    View function for the `/` endpoint.
     """
     # Setting variables
     ids = set(request.GET.getlist("id", []))
