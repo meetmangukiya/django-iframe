@@ -1,74 +1,74 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>
-      {{ title }}
-    </title>
-    
-    <style>
-      .video-container {
-	position:relative;
-	padding-bottom:56.25%;
-	padding-top:30px;
-	height:0;
-	overflow:hidden;
-        vertical-align: middle;
-      }
+    <head>
+        <title>
+            {{ title }}
+        </title>
 
-      .video-container iframe, .video-container object, .video-container embed {
-	position:absolute;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="video-container">
-    <div id="player">
-      <script type="text/javascript">
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        var player;
-        function onYouTubeIframeAPIReady() {
-          player = new YT.Player('player', {
-            height: '390',
-            width: '640',
-            events: {
-              'onReady': onPlayerReady
+        <style>
+            .video-container {
+                position:relative;
+                padding-bottom:56.25%;
+                padding-top:30px;
+                height:0;
+                overflow:hidden;
+                vertical-align: middle;
             }
-          });
-        }
 
-        function shuffle(array) {
-        var currentIndex = array.length, temporaryValue, randomIndex;
-        while (0 !== currentIndex) {
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex -= 1;
-            temporaryValue = array[currentIndex];
-            array[currentIndex] = array[randomIndex];
-            array[randomIndex] = temporaryValue;
-          }
-          return array; 
-        }
+            .video-container iframe, .video-container object, .video-container embed {
+                position:absolute;
+                top:0;
+                left:0;
+                width:100%;
+                height:100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="video-container">
+            <div id="player">
+                <script type="text/javascript">
+                    var tag = document.createElement('script');
+                    tag.src = "https://www.youtube.com/iframe_api";
 
-        ids = [];
-        {% for id in ids%}
-          ids.push('{{id}}');
-        {% endfor %}
+                    var firstScriptTag = document.getElementsByTagName('script')[0];
+                    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-        ids = shuffle(ids);
+                    var player;
+                    function onYouTubeIframeAPIReady() {
+                        player = new YT.Player('player', {
+                            height: '390',
+                            width: '640',
+                            events: {
+                                'onReady': onPlayerReady
+                            }
+                        });
+                    }
 
-        function onPlayerReady(event) {
-          event.target.loadPlaylist(ids);
-        }
-      </script>
-    </div>
-    </div>
-  </body>
+                    function shuffle(array) {
+                        var currentIndex = array.length, temporaryValue, randomIndex;
+                        while (0 !== currentIndex) {
+                            randomIndex = Math.floor(Math.random() * currentIndex);
+                            currentIndex -= 1;
+                            temporaryValue = array[currentIndex];
+                            array[currentIndex] = array[randomIndex];
+                            array[randomIndex] = temporaryValue;
+                        }
+                        return array;
+                    }
+
+                    ids = [];
+                    {% for id in ids%}
+                        ids.push('{{id}}');
+                    {% endfor %}
+
+                    ids = shuffle(ids);
+
+                    function onPlayerReady(event) {
+                        event.target.loadPlaylist(ids);
+                    }
+                </script>
+            </div>
+        </div>
+    </body>
 </html>
