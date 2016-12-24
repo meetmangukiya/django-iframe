@@ -28,6 +28,7 @@
         <div class="video-container">
             <div id="player">
                 <script type="text/javascript">
+                    // Reference https://developers.google.com/youtube/iframe_api_reference
                     var tag = document.createElement('script');
                     tag.src = "https://www.youtube.com/iframe_api";
 
@@ -65,6 +66,7 @@
                     ids = shuffle(ids);
 
                     function onPlayerReady(event) {
+                        event.target.setPlaybackQuality({{ quality }})
                         event.target.loadPlaylist(ids);
                     }
                 </script>
