@@ -11,7 +11,7 @@ def play(request):
         'high': 'large',
         'hd': 'hd720',
         'hq': 'hd1080',
-        'hr': 'highres'
+        'hr': 'highres',
         'default': 'default'
     }
 
